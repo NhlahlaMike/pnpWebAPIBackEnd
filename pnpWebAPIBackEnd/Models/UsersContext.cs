@@ -15,9 +15,9 @@ namespace pnpWebAPIBackEnd.Models
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Users>()
+            /*builder.Entity<Users>()
                 .HasIndex(u => u.Email)
-                .IsUnique();
+                .IsUnique();*/
         }
 
         public virtual DbSet<Users> UsersDetails { get; set; }

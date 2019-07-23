@@ -9,7 +9,7 @@ using pnpWebAPIBackEnd.Models;
 namespace pnpWebAPIBackEnd.Migrations
 {
     [DbContext(typeof(UsersContext))]
-    [Migration("20190722101630_InitialCreate")]
+    [Migration("20190723145350_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,9 +22,9 @@ namespace pnpWebAPIBackEnd.Migrations
 
             modelBuilder.Entity("pnpWebAPIBackEnd.Models.Users", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Email")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Active")
                         .HasColumnType("nvarchar(100)");
@@ -39,9 +39,6 @@ namespace pnpWebAPIBackEnd.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("DateofBirth")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("FirstName")
@@ -91,11 +88,7 @@ namespace pnpWebAPIBackEnd.Migrations
                     b.Property<string>("WorkNumber")
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("Email")
-                        .IsUnique()
-                        .HasFilter("[Email] IS NOT NULL");
+                    b.HasKey("Email");
 
                     b.ToTable("UsersDetails");
                 });

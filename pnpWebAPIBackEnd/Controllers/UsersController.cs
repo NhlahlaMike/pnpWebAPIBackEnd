@@ -29,7 +29,7 @@ namespace pnpWebAPIBackEnd.Controllers
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUsers(int id)
+        public async Task<ActionResult<Users>> GetUsers(string id)
         {
             var users = await _context.UsersDetails.FindAsync(id);
 
@@ -43,9 +43,9 @@ namespace pnpWebAPIBackEnd.Controllers
 
         // PUT: api/Users/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(int id, Users users)
+        public async Task<IActionResult> PutUsers(string id, Users users)
         {
-            if (id != users.Id)
+            if (id != users.Email)
             {
                 return BadRequest();
             }
@@ -78,12 +78,12 @@ namespace pnpWebAPIBackEnd.Controllers
             _context.UsersDetails.Add(users);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUsers", new { id = users.Id }, users);
+            return CreatedAtAction("GetUsers", new { id = users.Email }, users);
         }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Users>> DeleteUsers(int id)
+        public async Task<ActionResult<Users>> DeleteUsers(string id)
         {
             var users = await _context.UsersDetails.FindAsync(id);
             if (users == null)
@@ -97,9 +97,9 @@ namespace pnpWebAPIBackEnd.Controllers
             return users;
         }
 
-        private bool UsersExists(int id)
+        private bool UsersExists(string id)
         {
-            return _context.UsersDetails.Any(e => e.Id == id);
+            return _context.UsersDetails.Any(e => e.Email == id);
         }
     }
 }

@@ -10,7 +10,6 @@ namespace pnpWebAPIBackEnd.Models
     public class Users
     {
         [Key]
-        public int Id { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string Email { get; set; }
         [Column(TypeName = "nvarchar(100)")]

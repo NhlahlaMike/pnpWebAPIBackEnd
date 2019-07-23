@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace pnpWebAPIBackEnd.Migrations
 {
@@ -11,9 +10,7 @@ namespace pnpWebAPIBackEnd.Migrations
                 name: "UsersDetails",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Email = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     Surname = table.Column<string>(type: "nvarchar(100)", nullable: true),
@@ -38,15 +35,8 @@ namespace pnpWebAPIBackEnd.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UsersDetails", x => x.Id);
+                    table.PrimaryKey("PK_UsersDetails", x => x.Email);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UsersDetails_Email",
-                table: "UsersDetails",
-                column: "Email",
-                unique: true,
-                filter: "[Email] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
