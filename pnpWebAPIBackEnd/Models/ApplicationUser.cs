@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace pnpWebAPIBackEnd.Models
 {
-    public class Users
+    public class ApplicationUser : IdentityUser
     {
-        [Key]
-        [Column(TypeName = "nvarchar(100)")]
-        public string Email { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string Title { get; set; }
         [Column(TypeName = "nvarchar(100)")]
@@ -27,8 +25,6 @@ namespace pnpWebAPIBackEnd.Models
         [Column(TypeName = "nvarchar(100)")]
         public string Gender { get; set; }
         [Column(TypeName = "nvarchar(100)")]
-        public string PhoneNumber { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
         public string HomeNumber { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string WorkNumber { get; set; }
@@ -36,6 +32,7 @@ namespace pnpWebAPIBackEnd.Models
         public string AddressType { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string StreetAddress { get; set; }
+        [Column(TypeName = "nvarchar(100)")]
         public string Suburb { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string City { get; set; }
@@ -47,8 +44,6 @@ namespace pnpWebAPIBackEnd.Models
         public string CommsMethod { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string UserType { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
-        public string Password { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string LoginStatus { get; set; }
         [Column(TypeName = "nvarchar(100)")]
