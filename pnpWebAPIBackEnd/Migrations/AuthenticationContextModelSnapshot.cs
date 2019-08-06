@@ -189,6 +189,40 @@ namespace pnpWebAPIBackEnd.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("pnpWebAPIBackEnd.Models.Product", b =>
+                {
+                    b.Property<string>("Barcode")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Features")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Usage")
+                        .IsRequired()
+                        .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 64)))
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Barcode");
+
+                    b.ToTable("Products");
+                });
+
             modelBuilder.Entity("pnpWebAPIBackEnd.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");

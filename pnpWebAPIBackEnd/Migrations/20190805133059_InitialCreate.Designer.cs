@@ -10,7 +10,7 @@ using pnpWebAPIBackEnd.Models;
 namespace pnpWebAPIBackEnd.Migrations
 {
     [DbContext(typeof(AuthenticationContext))]
-    [Migration("20190725090708_InitialCreate")]
+    [Migration("20190805133059_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -189,6 +189,40 @@ namespace pnpWebAPIBackEnd.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("pnpWebAPIBackEnd.Models.Product", b =>
+                {
+                    b.Property<string>("Barcode")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Features")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProductType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Usage")
+                        .IsRequired()
+                        .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 64)))
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Barcode");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("pnpWebAPIBackEnd.Models.ApplicationUser", b =>

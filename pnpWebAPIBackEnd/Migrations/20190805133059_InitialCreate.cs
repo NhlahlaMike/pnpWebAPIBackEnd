@@ -68,6 +68,23 @@ namespace pnpWebAPIBackEnd.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Barcode = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    ProductName = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    ProductType = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    Features = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    Usage = table.Column<string>(type: "nvarchar(100)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Barcode);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -229,6 +246,9 @@ namespace pnpWebAPIBackEnd.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

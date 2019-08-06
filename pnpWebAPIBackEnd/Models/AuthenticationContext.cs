@@ -24,5 +24,6 @@ namespace pnpWebAPIBackEnd.Models
         }*/
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }
